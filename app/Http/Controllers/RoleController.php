@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Http\Requests\UpdateRoleFormRequest;
 use App\Role;
 use Illuminate\Http\Request;
 
