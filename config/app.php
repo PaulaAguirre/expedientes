@@ -182,11 +182,7 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
 
-        /*
-         * paula Service Providers...
-         */
 
-        //App\Providers\PaulaServiceProvider::class,
 
     ],
 

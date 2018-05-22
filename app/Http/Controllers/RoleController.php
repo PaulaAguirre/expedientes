@@ -14,7 +14,7 @@ class RoleController extends Controller
      */
     public function __construct ()
     {
-        $this->middleware ('roles: 1, 2');
+        //$this->middleware ('roles: 1, 2');
     }
 
     /**
@@ -28,8 +28,13 @@ class RoleController extends Controller
             $query = trim ( $request->get ( 'searchText' ) );
             $roles = Role::where('nombre', 'like', '%'.$query.'%')
                 ->orderBy('id', 'ASC')->paginate(4);
-            return view ( 'roles.index', ['roles' => $roles, 'searchText' => $query] );
+
         }
+
+        return view ( 'roles.index', ['roles' => $roles, 'searchText' => $query] );
+        //dd ($roles);
+
+
     }
 
     /**
