@@ -1,23 +1,18 @@
 @extends ('layouts.admin')
-@section ('contenido')
+@section('contenido')
 <div class="container">
-    <br>
-    <div>
-        <h1 class="text-center text-blue">FoundDoc</h1>
 
-</div>
+    <div class="row text-center">
+        <div class="col-md-12">
+            <img src="{{('img/F (107).png')}}" alt="Lights" style="width: 80%">
 
-    <br>
-    <br>
-
-    <div class="img-circle">
-        <div class="text-center">
-            <img src="{{('img/nuevofd.png')}}" alt="Lights" style="width:50%">
         </div>
     </div>
 
 
 </div>
+
+
 
 
 
