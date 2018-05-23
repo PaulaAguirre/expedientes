@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>GDOC | DCingeniería </title>
+    <title>FDoc | DCingeniería </title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -17,7 +17,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">
     <link rel="apple-touch-icon" href="{{asset('img/apple-touch-icon.png')}}">
-    <link rel="shortcut icon" href="{{asset('img/contrato.png')}}" >
+    <link rel="shortcut icon" href="{{asset('img/lupa.png')}}" >
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -26,11 +26,11 @@
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="" class="logo">
+        <a href="{{url ('index_exp')}}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>GD</b></span>
+            <span class="logo-mini"><b>FD</b></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>GDoc</b></span>
+            <span class="logo-lg"><b>FDoc</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->

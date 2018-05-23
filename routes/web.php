@@ -11,15 +11,32 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/home', function () {
+
+    if (Auth::check ())
+    {
+        return redirect ('index_exp');
+    }
+    else
+    {
+        return redirect ('login');
+    }
+
+
+
 });
+
+Route::get('/', function () {
+    return redirect()->back();
+});
+
 
 
 Auth::routes();
 
 
 Route::group (['middleware'=>'auth'], function (){
+    Route::view ('index_exp', 'index_exp');
     Route::resource ('roles', 'RoleController');
     Route::resource('users', 'UserController');
     Route::resource ('gerencias', 'GerenciaController');

@@ -1,20 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Role;
+
+use App\Proveedor;
 use Illuminate\Http\Request;
-use App\Http\Requests\UpdateRoleFormRequest;
 
-
-
-class RoleController extends Controller
+class ProveedorController extends Controller
 {
     /**
-     * RoleController constructor.
+     * ProveedorController constructor.
      */
     public function __construct ()
     {
-        $this->middleware ('roles: 1, 2');
+        $this->middleware ('roles: 1,2')->except ('index');
     }
 
     /**
@@ -26,15 +24,10 @@ class RoleController extends Controller
     {
         if ($request) {
             $query = trim ( $request->get ( 'searchText' ) );
-            $roles = Role::where('nombre', 'like', '%'.$query.'%')
-                ->orderBy('id', 'ASC')->paginate(4);
-
+            $proveedores = Proveedor::where('name', 'like', '%'.$query.'%')
+                ->orderBy('id', 'DESC')->paginate(4);
+            return view ( 'proveedores.index', ['proveedores' => $proveedores, 'searchText' => $query] );
         }
-
-        return view ( 'roles.index', ['roles' => $roles, 'searchText' => $query] );
-        //dd ($roles);
-
-
     }
 
     /**
@@ -44,7 +37,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view ('roles.create');
+        return view ('proveedores.create');
     }
 
     /**
@@ -55,23 +48,19 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        $proveedor = new Proveedor($request->all ());
+        $proveedor->save ();
 
-        $this->validate($request, [
-            'nombre' => 'required|unique:roles',
-        ]);
-
-        $role = new Role($request->all ());
-        $role->save ();
-        return redirect ()->to ('roles');
+        return redirect ('proveedores');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Proveedor $proveedor)
     {
         //
     }
@@ -79,42 +68,41 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        return view ('roles.edit', ['role'=>Role::findOrFail($id)]);
+        return view ('proveedores.edit', ['proveedor' => Proveedor::findOrFail ($id)]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRoleFormRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $role = Role::findOrFail($id);
-        $role->fill($request->all ());
-        $role->update();
+        $proveedor = Proveedor::findOrFail ($id);
+        $proveedor->fill($request->all ());
+        $proveedor->update ();
 
-        return redirect ()->to ('roles');
-
+        return redirect ('proveedores');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $role = Role::FindOrFail($id);
-        $role->delete();
+        $proveedor = Proveedor::findOrFail ($id);
+        $proveedor->delete ();
 
-        return redirect ()->back ();
+        return redirect ('proveedores');
     }
 }
