@@ -29,7 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="#" style="color: #122b40">
-                        GDOC
+                        FDOC
                     </a>
                 </div>
 
@@ -43,7 +43,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('login') }}"></a></li>
 
                         @else
                                 <li class="dropdown">
